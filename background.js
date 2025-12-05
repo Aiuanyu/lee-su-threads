@@ -1,5 +1,10 @@
 // Background service worker for Threads Profile Info Extractor
 
+// Browser compatibility: Support both Chrome and Firefox
+if (typeof browser === 'undefined') {
+  var browser = chrome;
+}
+
 // Listen for messages from content script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === 'PROFILE_INFO_EXTRACTED') {

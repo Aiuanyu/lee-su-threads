@@ -1,5 +1,10 @@
 // Content script for Threads Profile Info Extractor
 
+// Browser compatibility: Support both Chrome and Firefox
+if (typeof browser === 'undefined') {
+  var browser = chrome;
+}
+
 (function() {
   'use strict';
 
