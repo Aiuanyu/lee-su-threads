@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Threads Profile Extractor</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 360px;
+        min-height: 200px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #1a1a2e 0%, #0f0f23 100%);
+        color: #e0e0e0;
+      }
+
+      .header {
+        padding: 16px 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .header h1 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 4px;
+      }
+
+      .header p {
+        font-size: 12px;
+        color: #888;
+      }
+
+      .content {
+        padding: 16px 20px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .stat-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 12px;
+        text-align: center;
+      }
+
+      .stat-value {
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 4px;
+      }
+
+      .stat-label {
+        font-size: 11px;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: #e0e0e0;
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .btn-danger {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+      }
+
+      .btn-danger:hover {
+        background: rgba(239, 68, 68, 0.3);
+      }
+
+      .profile-list {
+        margin-top: 16px;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      .profile-list::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      .profile-list::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+      }
+
+      .profile-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        margin-bottom: 8px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .profile-item:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .profile-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .profile-info {
+        flex: 1;
+        overflow: hidden;
+      }
+
+      .profile-name {
+        font-size: 13px;
+        font-weight: 500;
+        color: #fff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .profile-meta {
+        font-size: 11px;
+        color: #888;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 24px;
+        color: #666;
+      }
+
+      .empty-state-icon {
+        font-size: 32px;
+        margin-bottom: 8px;
+      }
+
+      .empty-state-text {
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .footer {
+        padding: 12px 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+      }
+
+      .footer a {
+        color: #667eea;
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>📋 Threads Profile Extractor</h1>
+      <p>Extract profile info from your feed</p>
+    </div>
+
+    <div class="content">
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-value" id="profileCount">0</div>
+          <div class="stat-label">Profiles</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="sessionCount">0</div>
+          <div class="stat-label">This Session</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="exportBtn">
+          <span>📥</span> Export as JSON
+        </button>
+        <button class="btn btn-secondary" id="copyBtn">
+          <span>📋</span> Copy to Clipboard
+        </button>
+        <button class="btn btn-danger" id="clearBtn">
+          <span>🗑️</span> Clear Cache
+        </button>
+      </div>
+
+      <div class="profile-list" id="profileList">
+        <div class="empty-state">
+          <div class="empty-state-icon">🔍</div>
+          <div class="empty-state-text">
+            No profiles extracted yet.<br />
+            Browse Threads to capture profile info.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <a href="https://www.threads.com" target="_blank">Open Threads.com →</a>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

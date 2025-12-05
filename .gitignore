@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Codeium
+.codeiumignore
+
+# Build artifacts (if any)
+*.zip
