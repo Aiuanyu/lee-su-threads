@@ -1,5 +1,10 @@
 // Popup script for Threads Profile Extractor
 
+// Browser compatibility: Support both Chrome and Firefox
+if (typeof browser === 'undefined') {
+  var browser = chrome;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const profileCountEl = document.getElementById('profileCount');
   const sessionCountEl = document.getElementById('sessionCount');
