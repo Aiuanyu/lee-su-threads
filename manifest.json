@@ -3,20 +3,29 @@
   "name": "Lee-Su-Threads",
   "version": "0.1.0",
   "description": "你是誰？自動顯示 Threads 貼文作者的地點資訊",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "lee-su-threads@aiuanyu.com",
+      "strict_min_version": "109.0"
+    }
+  },
   "permissions": [
     "storage",
     "activeTab"
   ],
   "host_permissions": [
-    "https://www.threads.com/*"
+    "https://www.threads.com/*",
+    "https://www.threads.net/*"
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "scripts": ["background.js"]
   },
   "content_scripts": [
     {
       "matches": [
-        "https://www.threads.com/*"
+        "https://www.threads.com/*",
+        "https://www.threads.net/*"
       ],
       "js": [
         "content.js"
@@ -46,7 +55,8 @@
         "injected.js"
       ],
       "matches": [
-        "https://www.threads.com/*"
+        "https://www.threads.com/*",
+        "https://www.threads.net/*"
       ]
     }
   ]
