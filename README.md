@@ -14,6 +14,25 @@
 
 ---
 
+## 功能
+
+- **自動擷取**：瀏覽動態時自動載入作者的地點資訊
+- **地點標籤**：在貼文時間旁顯示作者所在地點
+- **快取機制**：已擷取的資料會快取 24 小時
+- **匯出資料**：可將所有資料匯出為 JSON
+- **速率限制保護**：被 Threads 限制時會自動暫停並提醒
+
+## 擷取的資訊
+
+- **地點**：作者設定的所在地（例如：台灣）
+- **加入時間**：加入 Threads 的時間
+
+## 截圖
+
+![動態中的地點標籤](screenshots/feed-badge.png)
+
+![擴充功能彈出視窗](screenshots/popup.png)
+
 ## 使用方式
 
 1. 前往 [threads.com](https://www.threads.com)
@@ -50,6 +69,20 @@ The upstream [`meettomorrow/lee-su-threads`](https://github.com/meettomorrow/lee
 5. In Firefox's `about:addons` page, click the gear icon -> "Install Add-on From File..." to install
 
 ---
+
+### Features
+
+- **Auto-fetch**: Automatically loads author location while browsing the feed
+- **Location badges**: Shows location next to post timestamp
+- **Caching**: Extracted data is cached for 24 hours
+- **Export**: Export all data as JSON
+- **Rate limit protection**: Auto-pauses and notifies when rate limited by Threads
+
+### Screenshots
+
+![Feed badge](screenshots/feed-badge.png)
+
+![Popup](screenshots/popup.png)
 
 ### Usage
 
