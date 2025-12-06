@@ -14,6 +14,27 @@
 
 ---
 
+## 使用方式
+
+1. 前往 [threads.com](https://www.threads.com)
+2. 正常瀏覽動態
+3. 擴充功能會自動在貼文旁顯示地點標籤
+4. 點擊擴充功能圖示可查看所有已擷取的資料
+
+## 隱私說明
+
+- 所有資料僅儲存在本機瀏覽器儲存空間
+- 不會將任何資料傳送到外部伺服器
+- 快取會在 24 小時後自動清除
+
+## 限制
+
+- 需要 Threads 載入個人資料 API 才能擷取（通常瀏覽動態時會自動載入）
+- 若 Threads 更改 API 格式，可能需要更新擴充功能
+- 部分使用者可能未設定地點資訊
+
+---
+
 # Lee-Su-Threads
 
 **This repo is no longer maintained.**
@@ -27,3 +48,18 @@ The upstream [`meettomorrow/lee-su-threads`](https://github.com/meettomorrow/lee
 3. Run `scripts/package.sh` (remember to `chmod +x scripts/package.sh` first)
 4. The built `.xpi` will be in `dist-zip/`
 5. In Firefox's `about:addons` page, click the gear icon -> "Install Add-on From File..." to install
+
+---
+
+### Usage
+
+1. Navigate to [threads.com](https://www.threads.com)
+2. Browse your feed normally
+3. Location badges will automatically appear next to posts
+4. Click the extension icon to view all extracted profiles
+
+### Privacy
+
+- All data is stored locally in the browser's storage
+- No data is sent to external servers
+- Cache is automatically cleared after 24 hours
