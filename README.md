@@ -1,8 +1,18 @@
 # Lee-Su-Threads 你是誰
 
-一個 Chrome 擴充功能，自動顯示 Threads 貼文作者的地點資訊，不需要點進每個人的個人檔案。
+**這個 repo 已經不再維護。**
 
-> **[English](#english)** below
+上游 [`meettomorrow/lee-su-threads`](https://github.com/meettomorrow/lee-su-threads) 已經支援 Firefox，請前往該 repo 下載最新版本。
+
+## 如何 build Firefox xpi
+
+1. 前往 [meettomorrow/lee-su-threads](https://github.com/meettomorrow/lee-su-threads)
+2. 下載最新的 zip 檔並解壓縮
+3. 執行 `scripts/package.sh`（記得先 `chmod +x scripts/package.sh`）
+4. build 好的 `.xpi` 會放在 `dist-zip/` 裡
+5. 在 Firefox 的 `about:addons` 頁面，點擊齒輪圖示 -> "Install Add-on From File..." 即可安裝
+
+---
 
 ## 功能
 
@@ -23,18 +33,6 @@
 
 ![擴充功能彈出視窗](screenshots/popup.png)
 
-## 安裝方式
-
-> ⏳ **Chrome Web Store 審核中**，若對以下操作不熟悉，建議等待 Chrome Web Store 版本上架。
-
-1. 前往 [Releases 頁面](https://github.com/meettomorrow/lee-su-threads/releases) 下載最新版本的 ZIP 檔
-2. 解壓縮 ZIP 檔
-3. 開啟 Chrome，前往 `chrome://extensions/`
-4. 開啟右上角的「**開發人員模式**」
-5. 點擊「**載入未封裝項目**」
-6. 選擇解壓縮後的資料夾
-7. 擴充功能圖示會出現在工具列
-
 ## 使用方式
 
 1. 前往 [threads.com](https://www.threads.com)
@@ -44,7 +42,7 @@
 
 ## 隱私說明
 
-- 所有資料僅儲存在本機 Chrome 儲存空間
+- 所有資料僅儲存在本機瀏覽器儲存空間
 - 不會將任何資料傳送到外部伺服器
 - 快取會在 24 小時後自動清除
 
@@ -56,11 +54,21 @@
 
 ---
 
-<a name="english"></a>
+# Lee-Su-Threads
 
-## English
+**This repo is no longer maintained.**
 
-A Chrome extension that automatically displays location info for Threads post authors without visiting each profile.
+The upstream [`meettomorrow/lee-su-threads`](https://github.com/meettomorrow/lee-su-threads) now supports Firefox. Please visit the upstream repo to download the latest version.
+
+## How to build Firefox xpi
+
+1. Go to [meettomorrow/lee-su-threads](https://github.com/meettomorrow/lee-su-threads)
+2. Download the latest zip and unzip it
+3. Run `scripts/package.sh` (remember to `chmod +x scripts/package.sh` first)
+4. The built `.xpi` will be in `dist-zip/`
+5. In Firefox's `about:addons` page, click the gear icon -> "Install Add-on From File..." to install
+
+---
 
 ### Features
 
@@ -70,17 +78,11 @@ A Chrome extension that automatically displays location info for Threads post au
 - **Export**: Export all data as JSON
 - **Rate limit protection**: Auto-pauses and notifies when rate limited by Threads
 
-### Installation
+### Screenshots
 
-> ⏳ **Pending Chrome Web Store review.** If you're not familiar with the steps below, please wait for the Chrome Web Store version.
+![Feed badge](screenshots/feed-badge.png)
 
-1. Download the latest ZIP from [Releases](https://github.com/meettomorrow/lee-su-threads/releases)
-2. Unzip the file
-3. Open Chrome and navigate to `chrome://extensions/`
-4. Enable **Developer mode** (toggle in top-right corner)
-5. Click **Load unpacked**
-6. Select the unzipped folder
-7. The extension icon should appear in your toolbar
+![Popup](screenshots/popup.png)
 
 ### Usage
 
@@ -91,10 +93,6 @@ A Chrome extension that automatically displays location info for Threads post au
 
 ### Privacy
 
-- All data is stored locally in Chrome's storage
+- All data is stored locally in the browser's storage
 - No data is sent to external servers
 - Cache is automatically cleared after 24 hours
-
-## License
-
-MIT License
