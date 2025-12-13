@@ -1,17 +1,19 @@
 {
   "manifest_version": 3,
-  "name": "Lee-Su-Threads",
-  "version": "0.1.0",
-  "description": "你是誰？自動顯示 Threads 貼文作者的地點資訊",
+  "name": "__MSG_extName__ (Direct)",
+  "version": "0.3.7",
+  "description": "__MSG_extDescription__",
+  "default_locale": "zh_TW",
   "permissions": [
-    "storage",
-    "activeTab"
+    "storage"
   ],
   "host_permissions": [
     "https://www.threads.com/*"
   ],
   "background": {
-    "service_worker": "background.js"
+    "scripts": [
+      "background.js"
+    ]
   },
   "content_scripts": [
     {
@@ -49,5 +51,17 @@
         "https://www.threads.com/*"
       ]
     }
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "lee-su-threads-direct@meetandy.ai",
+      "strict_min_version": "109.0",
+      "update_url": "https://github.com/meettomorrow/lee-su-threads/releases/latest/download/updates.json",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  }
 }

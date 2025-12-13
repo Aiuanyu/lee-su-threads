@@ -1,0 +1,32 @@
+{
+  "name": "lee-su-thread",
+  "version": "1.0.0",
+  "description": "一個 Chrome 擴充功能，自動顯示 Threads 貼文作者的地點資訊，不需要點進每個人的個人檔案。",
+  "main": "background.js",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "node esbuild.config.js",
+    "build:watch": "node esbuild.config.js --watch",
+    "build:firefox-amo": "FIREFOX_BUILD_TYPE=amo node esbuild.config.js",
+    "build:firefox-self-hosted": "FIREFOX_BUILD_TYPE=self-hosted node esbuild.config.js",
+    "clean": "rm -rf dist",
+    "start:firefox": "web-ext run --source-dir=dist/firefox-direct --start-url=https://www.threads.com",
+    "start:firefox:android": "bash scripts/run-firefox-android.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gh-work:meettomorrow/lee-su-threads.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "esbuild": "^0.27.1",
+    "happy-dom": "^20.0.11",
+    "jsdom": "^27.3.0",
+    "vitest": "^4.0.15",
+    "web-ext": "^9.2.0"
+  }
+}
