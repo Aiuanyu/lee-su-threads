@@ -141,6 +141,71 @@ Creates distribution zips in `dist-zip/`:
 - `lee-su-threads-chrome-v{version}.zip` - For Chrome Web Store
 - `lee-su-threads-firefox-v{version}.zip` - For Firefox Add-ons
 
+## Contributing to Upstream (For Forks)
+
+If you're working on a fork and want to contribute changes back to the upstream repository, use the automated workflow to create a clean branch:
+
+### Automated Workflow
+
+```bash
+# Create a clean branch for upstream contribution
+npm run upstream:branch <branch-name>
+
+# Example:
+npm run upstream:branch fix-location-parser
+npm run upstream:branch feature-add-city-support
+```
+
+This script will:
+1. Check if `upstream` remote exists (prompt to add if missing)
+2. Fetch latest changes from upstream
+3. Update your local `main` branch with upstream changes
+4. Create a new branch from the clean, synced `main`
+5. Provide step-by-step instructions for contributing
+
+### What to Avoid
+
+When contributing to upstream:
+- ❌ **DO NOT** include fork-specific files:
+  - `.github/workflows/claude*.yml` (Claude workflows)
+  - Any other custom workflows or configs specific to your fork
+- ✅ **DO** include only feature-related changes:
+  - `src/` code changes
+  - `test/` test updates
+  - Documentation updates (if relevant)
+
+### Verification Before Creating PR
+
+Before pushing to your fork and creating a PR:
+
+```bash
+# Check what files will be included in the PR
+git diff upstream/main...<your-branch-name> --name-only
+
+# If you see any fork-specific files, do NOT include them in commits
+```
+
+### Manual Workflow (Alternative)
+
+If you prefer manual control:
+
+```bash
+# Add upstream remote (one-time setup)
+git remote add upstream https://github.com/meettomorrow/lee-su-threads.git
+
+# Sync with upstream
+git fetch upstream
+git checkout main
+git merge upstream/main --ff-only
+
+# Create clean branch
+git checkout -b feature-name
+
+# Make your changes (avoid .github/workflows/claude*.yml)
+# Commit and push
+git push origin feature-name
+```
+
 ## Code Style
 
 - Use ES modules (`import`/`export`) in `src/`

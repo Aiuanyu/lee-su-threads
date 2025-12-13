@@ -12,7 +12,8 @@
     "build:firefox-self-hosted": "FIREFOX_BUILD_TYPE=self-hosted node esbuild.config.js",
     "clean": "rm -rf dist",
     "start:firefox": "web-ext run --source-dir=dist/firefox-direct --start-url=https://www.threads.com",
-    "start:firefox:android": "bash scripts/run-firefox-android.sh"
+    "start:firefox:android": "bash scripts/run-firefox-android.sh",
+    "upstream:branch": "bash scripts/create-upstream-branch.sh"
   },
   "repository": {
     "type": "git",
